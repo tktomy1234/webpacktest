@@ -19,7 +19,7 @@ let rawBodySaver = function (req, res, buf, encoding) {
 }
 
 module.exports = function package1(opts) {
-  logger.info('Starting package1')
+  console.info('Starting package1')
 
   app = express()
 
@@ -46,12 +46,11 @@ module.exports = function package1(opts) {
     routesFolder (routesPath) {
       loadedRoutes = false
 
-      logger.debug('Load routes from path:', routesPath)
       fs.readdir(routesPath, (err, items) => {
         loadedRoutes = true
 
         if (err) {
-          return logger.error('Could not read routes path!')
+          return console.error('Could not read routes path!')
         }
 
         items.forEach(item => {
@@ -70,7 +69,7 @@ module.exports = function package1(opts) {
               router[method]('/' + routePattern, routeCb)
             })
 
-          logger.debug('added route', item)
+          console.debug('added route', item)
         })
       })
     },
@@ -82,9 +81,9 @@ module.exports = function package1(opts) {
     start (customPort, retries = 0) {
       // wait for routes to be loaded
       if (!loadedRoutes) {
-        logger.debug('Waiting for routes...')
+        console.debug('Waiting for routes...')
         if (retries > MAX_ROUTES_RETRIES) {
-          logger.error('Could not load routes before starting application')
+          console.error('Could not load routes before starting application')
           return
         }
 
@@ -99,7 +98,7 @@ module.exports = function package1(opts) {
       routes(router)
       app.use(express.static(path.join(__dirname, 'public')))
       app.use('/', router)
-      app.listen(listenPort, () => logger.info(`Listening on port http://127.0.0.1:${listenPort}!`))
+      app.listen(listenPort, () => console.info(`Listening on port http://127.0.0.1:${listenPort}!`))
     }
   }
 }
