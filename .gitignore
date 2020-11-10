@@ -1,0 +1,13 @@
+node_modules
+logs
+build
+dist
+deploy
+*.DS_Store
+*.iml
+.eslintrc
+.tmp
+npm-debug.log
+npm-debug.log.*
+*.key
+

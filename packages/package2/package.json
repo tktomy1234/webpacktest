@@ -1,0 +1,25 @@
+{
+  "name": "package2",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start pm2.config.js",
+    "stop": "pm2 stop pm2.config.js"  
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "package1": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "express": "^4.17.1",
+    "mocha": "^4.0.1",
+    "proxyquire": "^1.8.0",
+    "sinon": "^4.1.2",
+    "supertest": "^3.4.2"
+  }
+}
